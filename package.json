@@ -1,0 +1,57 @@
+{
+  "name": "fz-i18n",
+  "version": "1.0.0",
+  "description": "i18n handling",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --no-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vimalceg/fz-i18n.git"
+  },
+  "keywords": [
+    "react",
+    "i18n",
+    "i18n",
+    "component"
+  ],
+  "author": "vimalesan.ceg@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vimalceg/fz-i18n/issues"
+  },
+  "homepage": "https://github.com/vimalceg/fz-i18n#readme",
+  "jest": {
+    "rootDir": ".",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/library/"
+    ],
+    "unmockedModulePathPatterns": [
+      "__tests__",
+      "node_modules",
+      ".*"
+    ],
+    "testPathDirs": [
+      "<rootDir>/__tests__/"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html",
+      "json-summary",
+      "text"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ]
+  },
+  "dependencies": {
+    "moment": "^2.17.1",
+    "moment-timezone": "^0.5.10"
+  },
+  "devDependencies": {
+    "jest": "^17.0.3"
+  }
+}
