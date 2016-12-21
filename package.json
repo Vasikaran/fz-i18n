@@ -1,10 +1,14 @@
 {
   "name": "fz-i18n",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "i18n handling",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "jest --coverage --no-cache"
+    "clean": "rimraf lib coverage",
+    "test": "jest --coverage --no-cache",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build":"npm run build:commonjs",
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
@@ -47,11 +51,29 @@
       "js"
     ]
   },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
   "dependencies": {
     "moment": "^2.17.1",
-    "moment-timezone": "^0.5.10"
+    "moment-timezone": "^0.5.10",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-redux": "^4.4.5"
   },
   "devDependencies": {
-    "jest": "^17.0.3"
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-jest": "^17.0.2",
+    "babel-preset-react": "^6.5.0",
+    "check-es3-syntax-cli": "^0.1.3",
+    "cross-env": "^1.0.7",
+    "jest": "^17.0.3",
+    "rimraf": "^2.5.4"
   }
 }

@@ -1,26 +1,5 @@
 import React,{PropTypes, Children} from 'react';
-
-function replaceI18NValuesWithRegex(i18nStr,values)
-{
-	if(typeof values !== "undefined")
-	{
-		if(Array.isArray(values)){
-			for(var i=0;i< values.length;i++){
-				i18nStr = i18nStr.replace( new RegExp( "\\{"+i+"\\}","g") ,values[i]);
-			}
-		}
-		else {
-			i18nStr = i18nStr.replace( new RegExp( "\\{0\\}","g") ,values);
-		}
-	}
-	return i18nStr;
-}
-function unescapeUnicode(str)
-{
-    return str.replace( /\\u([a-fA-F0-9]{4})/g, function(g, m1) {
-         return String.fromCharCode(parseInt(m1, 16));
-    });
-}	
+import { replaceI18NValuesWithRegex, unescapeUnicode } from '../utils';
 
 export default class I18N extends React.Component {  
 	constructor(props) {
