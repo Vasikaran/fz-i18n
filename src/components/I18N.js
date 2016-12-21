@@ -10,8 +10,6 @@ export default class I18N extends React.Component {
 	getI18NValue(){
 		const {i18NKey:key,values} =this.props;
 		const {i18n} =this.context;
-		console.log(values)
-		console.log("getI18NValue",key);
 		if(typeof i18n === "undefined" || key === "" || typeof key === "undefined"){
 			return key;
 		}

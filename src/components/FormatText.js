@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import I18N from './I18N'
 
 export default class FormatText extends React.Component{
 	render(){

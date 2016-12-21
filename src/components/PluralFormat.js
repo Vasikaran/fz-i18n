@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import FormatText from './components/FormatText'
 
 export default class PluralFormat extends React.Component{
 	render(){

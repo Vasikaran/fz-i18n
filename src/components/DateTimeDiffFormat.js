@@ -98,3 +98,24 @@ export default class DateTimeDiffFormat extends React.Component{
          </span>
     }
 }
+DateTimeDiffFormat.propTypes = {
+    from:PropTypes.string,
+    fromTimeZone:PropTypes.string,
+    to:PropTypes.string,
+    toTimeZone:PropTypes.string,
+    ago:PropTypes.string,
+    later:PropTypes.string,  
+    tommorrow:PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+        ]),
+    yesterday:PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+        ]),
+    today:PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+        ]),
+    others:PropTypes.func
+}
