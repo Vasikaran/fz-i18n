@@ -1,6 +1,15 @@
 import React,{PropTypes, Children} from 'react';
 import { connect } from 'react-redux';
+import { getI18NValue,userDateFormat } from '../utils';
+
 const emptyObj={};
+const errorFn=()=>{
+    throw new Error("Not Mount <I18NProvider/> component");
+}
+export const i18nUtils ={
+  getI18NValue:errorFn,
+  getUserDateFormat:errorFn
+}
 export default class I18NProvider extends React.Component{
 
   constructor(props,context){
@@ -11,6 +20,8 @@ export default class I18NProvider extends React.Component{
     this.resolve = null;
     this.reject = null;
     this.state ={reRender:false}
+    i18nUtils.getI18NValue=getI18NValue(props.i18n)
+    i18nUtils.userDateFormat=userDateFormat(i18nUtils.getI18NValue,props.timeZone)
   }
   getChildContext() {
     return {
@@ -27,6 +38,8 @@ export default class I18NProvider extends React.Component{
       }).then(()=>{
         this.i18n=nextProps.i18n;
         this.timeZone = nextProps.timeZone;
+        i18nUtils.getI18NValue=getI18NValue(nextProps.i18n)
+        i18nUtils.userDateFormat=userDateFormat(i18nUtils.getI18NValue,nextProps.timeZone)
         this.setState({reRender:true},()=>{
           setTimeout(()=>this.setState({reRender:false}),1);
         })  
@@ -39,7 +52,6 @@ export default class I18NProvider extends React.Component{
     }
   }
   render(){
-    console.log("I18NProvider -- render");
     return this.state.reRender ? null: Children.only(this.props.children)
   }
 
@@ -50,7 +62,7 @@ I18NProvider.defaultProps = {
 }
 I18NProvider.childContextTypes = {
   i18n: PropTypes.object,
-  timeZone: PropTypes.object
+  timeZone: PropTypes.string
 };
 
 export const ConnectI18NProvider =  connect((state,props)=>{

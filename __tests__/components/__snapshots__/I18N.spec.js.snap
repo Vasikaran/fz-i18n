@@ -1,0 +1,5 @@
+exports[`I18N component Should display i18n value 1`] = `
+<span>
+  vimal1
+</span>
+`;

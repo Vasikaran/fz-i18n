@@ -10,7 +10,7 @@ export default class I18N extends React.Component {
 	getI18NValue(){
 		const {i18NKey:key,values} =this.props;
 		const {i18n} =this.context;
-		if(typeof i18n === "undefined" || key === "" || typeof key === "undefined"){
+		if(typeof i18n === "undefined" ){
 			return key;
 		}
 		var i18nStr = i18n[key];
@@ -26,7 +26,7 @@ export default class I18N extends React.Component {
 			result[nextKey]=this.props[nextKey];
 			return result;
 		},{});
-		const child=this.getI18NValue();
+		//const child=this.getI18NValue();
 		return React.createElement(this.props.tag,
 			props,
 			this.getI18NValue()
@@ -38,7 +38,7 @@ export default class I18N extends React.Component {
   }
 }
 I18N.propTypes={
-	i18NKey:PropTypes.object.isRequired,
+	i18NKey:PropTypes.string.isRequired,
 	values:PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.array

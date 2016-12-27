@@ -1,5 +1,7 @@
 import React,{PropTypes, Children} from 'react';
 import moment from "moment-timezone";
+import { pad } from '../utils';
+import FormatText from './FormatText';
 
 export default class DateTimeDiffFormat extends React.Component{
     constructor(props){
@@ -10,9 +12,9 @@ export default class DateTimeDiffFormat extends React.Component{
     getSuffix(fromDateObj, toDateObj){
         let suffix;
         if(toDateObj.isBefore(fromDateObj)){
-            suffix=this.props.later || ''
-        }else if(toDateObj.isAfter(fromDateObj)){
             suffix=this.props.ago || ''
+        }else if(toDateObj.isAfter(fromDateObj)){
+            suffix=this.props.later || ''
         }else{
             suffix=''
         }
