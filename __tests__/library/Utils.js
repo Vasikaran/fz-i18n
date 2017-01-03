@@ -14,7 +14,7 @@ import renderer from 'react-test-renderer';
 
 const matchSnapshot = function(Component,defaultProps) {
 	const tree = renderer.create(
-			
+
     		<Component {...defaultProps} />
   			).toJSON();
 	expect(tree).toMatchSnapshot();
