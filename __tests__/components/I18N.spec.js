@@ -9,8 +9,8 @@ const defaultProps ={
 describe('I18N component', () => {
   it("Should display i18n value", ()=> { 
    var ele=renderer.create(
-    <I18NProvider i18n={{key1:"vimal1"}}>
-      <I18N {...defaultProps}/>
+    <I18NProvider i18n={{key1:"vimal1<b>vimal</b>"}}>
+      <I18N {...defaultProps} isHtml={true}/>
     </I18NProvider>
   );
     var tree=ele.toJSON();

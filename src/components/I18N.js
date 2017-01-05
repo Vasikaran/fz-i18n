@@ -22,15 +22,25 @@ export default class I18N extends React.Component {
 	}
 	createElement(){
 		const props = Object.keys(this.props).reduce((result,nextKey)=>{
-			if(nextKey!="i18NKey" && nextKey!="tag" && nextKey!="values")
+			if(nextKey!="i18NKey" && nextKey!="tag" && nextKey!="values" && nextKey!="isHtml")
 			result[nextKey]=this.props[nextKey];
 			return result;
 		},{});
 		//const child=this.getI18NValue();
-		return React.createElement(this.props.tag,
-			props,
-			this.getI18NValue()
-		);
+		if(this.props.isHtml){
+			var dangerouslySetInnerHTML={
+				__html:this.getI18NValue()
+			}
+
+			return React.createElement(this.props.tag,
+				Object.assign(props,{dangerouslySetInnerHTML})
+			);
+		}else{
+			return React.createElement(this.props.tag,
+				props,
+				this.getI18NValue()
+			);
+		}
 	}
   	
   render() {
@@ -43,10 +53,12 @@ I18N.propTypes={
 		PropTypes.string,
 		PropTypes.array
 	]),
-	tag:PropTypes.string
+	tag:PropTypes.string,
+	isHtml:PropTypes.bool
 }
 I18N.defaultProps={
-	tag:"span"
+	tag:"span",
+	isHtml:false
 }
 I18N.contextTypes = {
   i18n: PropTypes.object

@@ -24,6 +24,7 @@ export default class I18NProvider extends React.Component{
     i18nUtils.userDateFormat=userDateFormat(i18nUtils.getI18NValue,props.timeZone)
   }
   getChildContext() {
+    console.log("I18NProvider",this.i18n)
     return {
       i18n: this.i18n,
       timeZone: this.timeZone

@@ -28,11 +28,11 @@ describe('I18NProvider component', () => {
     expect(i18nUtils.userDateFormat("2016-12-27T08:36:03.837Z",{
     	today:"DD-MM-YYYY[today]",
     	tomorrow:"DD-MM-YYYY[tomorrow]",
-    	yesterday:"DD-MM-YYYY-yesterday",
-    	others:()=>"DD-MM-YYYY-others",
+    	yesterday:"DD-MM-YYYY-[yesterday]",
+    	others:()=>"DD-MM-YYYY-[others]",
     },
-    "ago","later",true
-    )).toBe("27-12-2016today ago");
+    "","",true
+    )).toBe("27-12-2016-others ");
     
   })
  

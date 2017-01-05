@@ -11,5 +11,6 @@ FormatText.propTypes={
 	values:PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.array
-	])
+	]),
+	isHtml:PropTypes.bool
 }
