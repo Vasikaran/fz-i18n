@@ -8,7 +8,6 @@ export default (i18NKeys=[])=>(Component)=>{
 		}
 		getI18NValue(key){
 			const {i18n} =this.context;
-			console.log(this.context)
 			if(typeof i18n === "undefined" ){
 				return key;
 			}
@@ -18,8 +17,6 @@ export default (i18NKeys=[])=>(Component)=>{
 			}
 			return unescapeUnicode(i18nStr);
 		}
-		
-	  	
 	  render() {
 	  	var i18nProps=i18NKeys.reduce((result,key)=>{
 	  		if(this.props[key]){
@@ -27,7 +24,6 @@ export default (i18NKeys=[])=>(Component)=>{
 	  		}
 	  		return result;
 	  	},{})
-	  	console.log(i18nProps,this.props)
 	    return <Component {...this.props} {...i18nProps}/>
 	  }
 	}

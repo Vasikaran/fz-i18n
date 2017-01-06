@@ -1,0 +1,7 @@
+exports[`I18N utils should display  j 1`] = `"j"`;
+
+exports[`I18N utils should display 01 1`] = `"01"`;
+
+exports[`I18N utils should display vimal 1`] = `"vimal"`;
+
+exports[`I18N utils should display vimalesan 1`] = `"vimalesan"`;

@@ -28,6 +28,6 @@
   },
   "homepage": "https://github.com/vimalceg/fz-i18n#readme",
   "devDependencies": {
-   "fz-react-cli":"0.0.3-beta.2"
+   "fz-react-cli":"0.0.3-beta.4"
   }
 }

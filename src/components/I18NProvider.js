@@ -25,7 +25,6 @@ export default class I18NProvider extends React.Component{
     i18nUtils.userDateFormat=userDateFormat(i18nUtils.getI18NValue,props.timeZone)
   }
   getChildContext() {
-    console.log("I18NProvider",this.i18n)
     return {
       i18n: this.i18n,
       timeZone: this.timeZone
@@ -48,7 +47,6 @@ export default class I18NProvider extends React.Component{
         this.promise=null;
       },()=>{
         this.promise=null;
-        console.log("reject i18n or timeZoneChanges change")
       })
       this.props.onChange(this.resolve,this.reject)
     }
@@ -68,7 +66,6 @@ I18NProvider.childContextTypes = {
 };
 
 export const ConnectI18NProvider =  connect((state,props)=>{
-	console.log(state)
 	var i18n={};
 	var timeZone="";
 	if(typeof props.i18n == "function"){
