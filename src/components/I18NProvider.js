@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { getI18NValue,userDateFormat } from '../utils';
 
 const emptyObj={};
-const errorFn=()=>{
-    throw new Error("Not Mount <I18NProvider/> component");
+const dummy=(key,values)=>{
+    console.log("Not Mount <I18NProvider/> component.")
+    return key
 }
 export const i18nUtils ={
-  getI18NValue:errorFn,
-  getUserDateFormat:errorFn
+  getI18NValue:dummy,
+  getUserDateFormat:dummy
 }
 export default class I18NProvider extends React.Component{
 
