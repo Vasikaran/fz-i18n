@@ -65,8 +65,8 @@
         />
 ```
 
-## Some scenario
-# More general component
+# Some scenario
+## More general component
 ```
 var Greetings = ()=>{
    return <span>Hello,{this.props.name}</span>
