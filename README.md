@@ -64,3 +64,39 @@
         later="later"
         />
 ```
+
+# Some scenario
+## More general component
+```
+var Greetings = ()=>{
+   return <span>Hello,{this.props.name}</span>
+}
+<Greetings name="vimal"/>
+
+Hello - hard coded data
+name - dynamic data mostly no need to I18N. In case any dynamic data going to pass generic component. use i18nUtils.getI18NValue function
+
+I18N Implementation
+var Greetings = ()=>{
+   return <span><FormatText key="helloI18nKey"/>,{this.props.name}</span>
+}
+<Greetings name="vimal"/>
+<Greetings name={i18nUtils.getI18NValue("world")}/>
+```
+
+```
+textarea placeholder display i18n value
+var Textarea=()=>{
+return <textarea placeHolder={this.props.placeHolder} value={this.props.value}></textarea>
+}
+
+You can mention particular props going to accept i18n key. so convert using I18N HOC 
+Textarea = HOCI18N(["placeHolder"])(Textarea)
+<Textarea placeHolder="i18n.please.enter.desc.key"/>
+
+You can use utils function
+<Textarea placeHolder={i18nUtils.getI18NValue("i18n.please.enter.desc.key")}/>
+
+```
+
+i18n json build time composes not yet done
