@@ -78,6 +78,7 @@ export const ConnectI18NProvider =  connect((state,props)=>{
 	}else if(typeof props.timeZone == "object"){
 		timeZone=props.timeZone;
 	}
+  console.log(i18n,timeZone)
 	return{
 		i18n,
 		timeZone

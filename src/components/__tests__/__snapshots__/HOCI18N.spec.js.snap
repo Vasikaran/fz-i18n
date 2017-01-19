@@ -1,0 +1,13 @@
+exports[`I18N component Should display i18n key 1`] = `
+<div>
+  test
+  key1
+</div>
+`;
+
+exports[`I18N component Should display i18n value 1`] = `
+<div>
+  test
+  vimal1
+</div>
+`;

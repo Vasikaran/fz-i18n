@@ -94,10 +94,7 @@ export default class DateTimeDiffFormat extends React.Component{
 
         } 
        
-        return <span>
-            <FormatText i18NKey={key} values={values}/>{' '} 
-            {isSuffixEnable && <FormatText i18NKey={suffix}/>}
-         </span>
+        return <FormatText i18NKey={ isSuffixEnable && suffix!=''? (key+"."+suffix):key} values={values}/>
     }
 }
 DateTimeDiffFormat.propTypes = {
