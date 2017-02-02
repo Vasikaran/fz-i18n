@@ -6,9 +6,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 describe('I18NProvider component', () => {
-  console.log("test1",i18NProviderUtils.getI18NValue("key1"))
   it("Should display i18n value using i18n utils function without I18NProvider", ()=> { 
-    console.log("test3",i18NProviderUtils.getI18NValue("key1"))
     expect(i18NProviderUtils.getI18NValue("key1")).toBe("key1");
   })
 
