@@ -1,5 +1,6 @@
 import PluralFormat from '../PluralFormat';
 import I18NProvider from '../I18NProvider';
+import FormatText from '../FormatText';
 import React from 'react';
 import renderer from 'react-test-renderer';
 

@@ -1,0 +1,17 @@
+exports[`UserTimeDiffFormat component Should display today ago - user 1`] = `
+<span>
+  00:00:01 ago
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today key - user 1`] = `
+<span>
+  today
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today later - user 1`] = `
+<span>
+  00:00:01 later
+</span>
+`;

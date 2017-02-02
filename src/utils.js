@@ -46,6 +46,7 @@ export function getI18NValue(i18n){
 			return unescapeUnicode(i18nStr);
 		}
 }
+
 export function userDateFormat(getI18NValue,userTimeZone){
 	return (to,{today,yesterday,tomorrow,others},ago,later,isSuffixEnable=false) =>{
 		var currentTime =  new Date();
@@ -122,6 +123,7 @@ export function userDateFormat(getI18NValue,userTimeZone){
             }
 
         } 
-		return getI18NValue(key,values)+(isSuffixEnable?" "+getI18NValue(suffix):"");
+        var key=isSuffixEnable && suffix!=''? (key+"."+suffix):key;
+		return getI18NValue(key1,values);
 	}
 }

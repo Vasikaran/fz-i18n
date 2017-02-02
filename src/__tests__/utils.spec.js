@@ -20,5 +20,8 @@ describe('I18N utils', () => {
   	var fn = getI18NValue({key1:"vimal"});
   	expect(fn("key1")).toMatchSnapshot();
   })
+  it("should display i18n value",()=>{
+    expect(((i18n,key,value)=>getI18NValue(i18n)(key,value))({key1:"vimal{0}"},"key1","esan")).toBe("vimalesan");
+  })
 
 })

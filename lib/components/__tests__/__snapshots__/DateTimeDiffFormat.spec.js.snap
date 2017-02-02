@@ -1,0 +1,17 @@
+exports[`DateTimeDiffFormat component Should display today ago 1`] = `
+<span>
+  00:00:01 ago
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display today key 1`] = `
+<span>
+  today
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display today later 1`] = `
+<span>
+  00:00:01 later
+</span>
+`;

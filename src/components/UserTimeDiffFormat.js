@@ -13,5 +13,5 @@ export default class UserTimeDiffFormat extends Component{
 	}
 }
 UserTimeDiffFormat.contextTypes = {
-  timeZone: PropTypes.object
+  timeZone: PropTypes.string
 }
