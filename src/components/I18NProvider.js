@@ -19,6 +19,7 @@ export default class I18NProvider extends React.Component{
     this.timeZone = props.timeZone;
     this.user=props.user;
     this.permission=props.permission;
+    this.license=props.license;
     this.promise = null;
     this.resolve = null;
     this.reject = null;
@@ -31,14 +32,15 @@ export default class I18NProvider extends React.Component{
       i18n: this.i18n,
       timeZone: this.timeZone,
       user:this.user,
-      permission:this.permission
+      permission:this.permission,
+      license:this.license
     };
   }
   componentWillReceiveProps(nextProps) {
 
     if(this.props.i18n!=nextProps.i18n || this.props.timeZone !=nextProps.timeZone ||
-      this.props.user !=nextProps.user || this.props.permission !=nextProps.permission
-      && this.promise){
+      this.props.user !=nextProps.user || this.props.permission !=nextProps.permission ||
+      this.props.license != nextProps.license && this.promise){
       this.promise = new Promise((res,rej)=>{
         this.resolve=res
         this.reject=rej
@@ -67,7 +69,8 @@ I18NProvider.defaultProps = {
   i18n:emptyObj,
   timeZone:"",
   user:null,
-  permission:null
+  permission:null,
+  license:null
 }
 I18NProvider.childContextTypes = {
   i18n: PropTypes.object,
@@ -116,14 +119,20 @@ export const AppProvider = connect((state,props)=>{
     user=props.user;
   }
   if(typeof props.permission == "function"){
-    permission = props.user(state);
+    permission = props.permission(state);
   }else if(typeof props.permission == "object"){
-    permission=props.user;
+    permission=props.permission;
+  }
+  if(typeof props.license == "function"){
+    license = props.license(state);
+  }else if(typeof props.license == "object"){
+    license=props.license;
   }
   return{
     i18n,
     timeZone,
     user,
-    permission
+    permission,
+    license
   }
 })(I18NProvider)
