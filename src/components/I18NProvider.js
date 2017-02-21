@@ -76,7 +76,8 @@ I18NProvider.childContextTypes = {
   i18n: PropTypes.object,
   timeZone: PropTypes.string,
   user:PropTypes.object,
-  permission:PropTypes.object
+  permission:PropTypes.object,
+  license:PropTypes.object
 };
 
 export const ConnectI18NProvider =  connect((state,props)=>{
