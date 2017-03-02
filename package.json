@@ -1,10 +1,10 @@
 {
   "name": "fz-i18n",
-  "version": "1.2.0-beta.4",
+  "version": "1.2.0-beta.5",
   "description": "i18n handling",
   "main": "lib/index.js",
   "scripts": {
-    "clean":"fz-react-cli clean lib coverage",
+    "clean":"fz-react-cli clean lib coverage dir",
     "docs": "fz-react-cli docs",
     "build:umd": "npm run clean && fz-react-cli build:component:umd",
     "build":"npm run clean && fz-react-cli build:component",
@@ -28,6 +28,6 @@
   },
   "homepage": "https://github.com/vimalceg/fz-i18n#readme",
   "devDependencies": {
-   "fz-react-cli":"0.0.3-beta.10"
+   "fz-react-cli":"file:../fz-react-cli"
   }
 }

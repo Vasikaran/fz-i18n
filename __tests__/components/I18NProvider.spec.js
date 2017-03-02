@@ -57,7 +57,7 @@ describe('I18NProvider component', () => {
       others:()=>"DD-MM-YYYY-[others]",
     },
     "","",true
-    )).toBe("27-12-2016-others ");
+    )).toBe("27-12-2016-others");
     
   })
  

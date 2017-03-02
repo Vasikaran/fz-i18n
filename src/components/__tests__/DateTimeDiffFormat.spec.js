@@ -26,6 +26,59 @@ describe('DateTimeDiffFormat component', () => {
     var tree=ele.toJSON();
     expect(tree).toMatchSnapshot();
   })
+  it("Should display today1", ()=> { 
+    var toDates=[
+      "2016-10-24T05:55:28.000Z",
+      "2016-10-24T03:55:28.000Z",
+      "2016-10-23T08:55:28.000Z",
+      "2016-10-23T08:55:27.000Z",
+      "2016-10-25T05:55:28.000Z",
+      "2016-10-25T05:55:27.000Z",
+      "2016-10-25T05:55:29.000Z",
+      "2016-10-25T05:55:28.000Z"
+    ]
+   var ele=renderer.create(
+    <I18NProvider i18n={{today:"today",yesterday:"yesterday",now:"noooow",
+    "support.1day.ago":"1day ago","support.1day.nhours.ago":"one day {0} hours ago"}}><div>
+      {
+      toDates.map((to)=>{
+        return <DateTimeDiffFormat from="2016-10-25T05:55:28.000Z" fromTimeZone="Asia/Kolkata" to={to} toTimeZone="Asia/Kolkata" 
+        format={({years,days,months,hours},pattern)=>{
+          
+          switch(pattern)
+           {
+            case "000000":
+              return {
+                key:"now"
+              }
+            break;
+            case "001000":
+            return {
+              key:"support.1day"
+            }
+            break;
+            case "001200":
+            case "001201":
+            return {
+              key:"support.1day.nhours",
+              params:["h"]
+            }
+            break;
+          }
+
+        }}
+        ago="ago"
+        later="later"
+        />  
+      })
+      
+      }
+      </div>
+    </I18NProvider>
+  );
+    var tree=ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  })
   it("Should display today later", ()=> { 
    var ele=renderer.create(
     <I18NProvider i18n={{today:"today",yesterday:"yesterday","today.later":"{0}:{1}:{2} later"}}>

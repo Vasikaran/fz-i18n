@@ -1,13 +1,12 @@
 import React,{PropTypes, Children} from 'react';
 import moment from "moment-timezone";
-import { pad } from '../utils';
+import { pad, getSuffix, getValues  } from '../utils';
 import FormatText from './FormatText';
 
 export default class DateTimeDiffFormat extends React.Component{
     constructor(props){
-        super(props)
-        this.getValues = this.getValues.bind(this);
-        this.getSuffix = this.getSuffix.bind(this);
+        super(props);
+        this.getSuffix = this.getSuffix.bind(this)
     }
     getSuffix(fromDateObj, toDateObj){
         let suffix;
@@ -20,18 +19,19 @@ export default class DateTimeDiffFormat extends React.Component{
         }
         return suffix;
     }
-    getValues(params=[],diff){
-        return params.map((param)=>{
-            return diff[param];
-        })
-    }
     render(){
-        const { from, fromTimeZone, to, toTimeZone,today,yesterday,tomorrow,others } = this.props;
+        const { from, fromTimeZone, to, toTimeZone,today,yesterday,tomorrow,others, format } = this.props;
         let fromDateObj = moment(from).tz(fromTimeZone);
         let toDateObj = moment(to).tz(toTimeZone);
         let suffix = this.getSuffix(fromDateObj,toDateObj);
         let diff = moment.duration(Math.abs(toDateObj.diff(fromDateObj)));
         var diffObj = {
+            h:diff.get('h'),
+            m:diff.get('m'),
+            s:diff.get('s'),
+            M:diff.get('M'),
+            y:diff.get('y'),
+            d:diff.get('d'),
             hh:pad(diff.get('h'),2),
             mm:pad(diff.get('m'),2),
             ss:pad(diff.get('s'),2),
@@ -43,58 +43,98 @@ export default class DateTimeDiffFormat extends React.Component{
             hours:diff.get('h'),
             minutes:diff.get('m'),
             seconds:diff.get('s'),
-            Months:diff.get('M'),
+            months:diff.get('M'),
             years:diff.get('y'),
             days:diff.get('d'),
         }
         var daysDiff = toDateObj.diff(fromDateObj, 'days');
-
         var key="";
         var values=[];
+        var text=null;
         var isSuffixEnable=false;
+        if(format){
+            let years,months,days,hours,minutes,seconds;
+            years = (diffObj1.years > 1) ? "2" : diffObj1.years;
+            months = (diffObj1.months > 1) ? "2" : diffObj1.months;
+            days = (diffObj1.days > 1) ? "2" : diffObj1.days;
+            hours = (diffObj1.hours > 1) ? "2" : diffObj1.hours;
+            minutes = (diffObj1.minutes > 1) ? "2" : diffObj1.minutes;
+            seconds = (diffObj1.seconds > 1) ? "2" : diffObj1.seconds;
+            let pattern=""+years+months+days+hours+minutes+seconds
+            let value = format(diffObj1,pattern);
+            if(value && typeof value == 'object'){
+                key=value.key;
+                values=getValues(value.params,diffObj);
+                isSuffixEnable=true;
+            }else if(typeof value == 'string'){
+                text=toDateObj.format(value);
+            }
+        }
+        else{
         if(daysDiff < -1){
             var value = others(diffObj1)
             if(typeof value == 'object'){
                 key=value.key;
-                values=this.getValues(value.params,diffObj);
+                values=getValues(value.params,diffObj);
                 isSuffixEnable=true;
             }else if(typeof value == 'string'){
-                key=toDateObj.format(value);
+                text=toDateObj.format(value);
             }
 
         }else if(daysDiff < 0){
-            if(typeof yesterday == 'object'){
+            if(typeof yesterday == 'function'){
+                var value=yesterday(diffObj1);
+                key=value.key;
+                values=getValues(value.params,diffObj);
+            }
+            else if(typeof yesterday == 'object'){
                 key=yesterday.key;
-                values=this.getValues(yesterday.params,diffObj);
+                values=getValues(yesterday.params,diffObj);
             }else if(typeof yesterday == 'string'){
-                key=toDateObj.format(yesterday);
+                text=toDateObj.format(yesterday);
             }
 
         }else if(daysDiff < 1){
-            if(typeof today == 'object'){
+            if(typeof today == 'function'){
+                var value=today(diffObj1);
+                key=value.key;
+                values=getValues(value.params,diffObj);
+            }
+            else if(typeof today == 'object'){
                 key=today.key;
-                values=this.getValues(today.params,diffObj);
+                values=getValues(today.params,diffObj);
                 isSuffixEnable=true;
             }else if(typeof today == 'string'){
-                key=toDateObj.format(today);
+                text=toDateObj.format(today);
             }
             
         }else if(daysDiff < 2){
-            key=tomorrow.key;
-            values=this.getValues(tomorrow.params,diffObj);
+            if(typeof tomorrow == 'function'){
+                var value=tomorrow(diffObj1);
+                key=value.key;
+                text=getValues(value.params,diffObj);
+            }
+            else if(typeof tomorrow == 'object'){
+                key=tomorrow.key;
+                values=getValues(tomorrow.params,diffObj);
+            }
+            else if(typeof tomorrow == 'string'){
+                text=toDateObj.format(tomorrow);
+            }
+            
         } else {
             var value = others(diffObj1)
             if(typeof value == 'object'){
                 key=value.key;
-                values=this.getValues(value.params,diffObj);
+                values=getValues(value.params,diffObj);
                 isSuffixEnable=true;
             }else if(typeof value == 'string'){
-                key=toDateObj.format(value);
+                text=toDateObj.format(value);
             }
 
         } 
-       
-        return <FormatText i18NKey={ isSuffixEnable && suffix!=''? (key+"."+suffix):key} values={values}/>
+       }
+        return text? <span>{text}</span>:<FormatText i18NKey={ isSuffixEnable && suffix!=''? (key+"."+suffix):key} values={values}/>
     }
 }
 DateTimeDiffFormat.propTypes = {
@@ -104,17 +144,31 @@ DateTimeDiffFormat.propTypes = {
     toTimeZone:PropTypes.string,
     ago:PropTypes.string,
     later:PropTypes.string,  
+    format:PropTypes.func,
     tommorrow:PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.object
+        PropTypes.object,
+        PropTypes.func
         ]),
     yesterday:PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.object
+        PropTypes.object,
+        PropTypes.func
         ]),
     today:PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.object
+        PropTypes.object,
+        PropTypes.func
         ]),
     others:PropTypes.func
 }
+
+
+
+/*1. Currently our client development is coupled with client(js) and server(jsp) code.
+2. There is one build setup for server and client(ant). So server knows client build version. If we separate client and server build, we have to maintain and update client build version.   
+
+In react, client development separated completely from server. So client and server code move into two repos. client build version maintain in redis. Server refer client build version from redis. (redis not persistence have to move db) 
+
+*/
+
