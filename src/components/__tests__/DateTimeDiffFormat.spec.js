@@ -35,11 +35,14 @@ describe('DateTimeDiffFormat component', () => {
       "2016-10-25T05:55:28.000Z",
       "2016-10-25T05:55:27.000Z",
       "2016-10-25T05:55:29.000Z",
-      "2016-10-25T05:55:28.000Z"
+      "2016-10-25T05:54:28.000Z",
+      "2016-10-25T05:53:28.000Z",
     ]
    var ele=renderer.create(
     <I18NProvider i18n={{today:"today",yesterday:"yesterday",now:"noooow",
-    "support.1day.ago":"1day ago","support.1day.nhours.ago":"one day {0} hours ago"}}><div>
+    "support.1day.ago":"1day ago","support.1day.nhours.ago":"one day {0} hours ago",
+    "support.1min.ago":"1min ago","support.nmins.ago":"{0} mins ago"
+  }}><div>
       {
       toDates.map((to)=>{
         return <DateTimeDiffFormat from="2016-10-25T05:55:28.000Z" fromTimeZone="Asia/Kolkata" to={to} toTimeZone="Asia/Kolkata" 
@@ -48,8 +51,21 @@ describe('DateTimeDiffFormat component', () => {
           switch(pattern)
            {
             case "000000":
+            case "000001":
+            case "000002":
               return {
                 key:"now"
+              }
+            break;
+            case "000010":
+              return {
+                key:"support.1min"
+              }
+            break;
+            case "000020":
+              return {
+                key:"support.nmins",
+                params:["m"]
               }
             break;
             case "001000":

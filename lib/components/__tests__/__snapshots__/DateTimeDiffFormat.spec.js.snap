@@ -34,13 +34,13 @@ exports[`DateTimeDiffFormat component Should display today1 1`] = `
     noooow
   </span>
   <span>
-    
-  </span>
-  <span>
-    
+    noooow
   </span>
   <span>
     noooow
+  </span>
+  <span>
+    
   </span>
 </div>
 `;
