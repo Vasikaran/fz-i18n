@@ -44,3 +44,15 @@ exports[`DateTimeDiffFormat component Should display today1 1`] = `
   </span>
 </div>
 `;
+
+exports[`DateTimeDiffFormat component Should display years and days 1`] = `
+<span>
+  2 years 61 days ago
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display years and days1 1`] = `
+<span>
+  2 years 61 days later
+</span>
+`;

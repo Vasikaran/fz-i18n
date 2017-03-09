@@ -25,6 +25,15 @@ export default class DateTimeDiffFormat extends React.Component{
         let toDateObj = moment(to).tz(toTimeZone);
         let suffix = this.getSuffix(fromDateObj,toDateObj);
         let diff = moment.duration(Math.abs(toDateObj.diff(fromDateObj)));
+        var days;
+        if(toDateObj.isBefore(fromDateObj)){
+            var tempTo=moment(to).tz(toTimeZone).add(diff.get('y'),'years');
+            days=Math.abs(tempTo.diff(fromDateObj,'days'));
+        }else{
+            var tempFrom=moment(fromDateObj).tz(fromTimeZone).add(diff.get('y'),'years');
+            days=toDateObj.diff(tempFrom,'days');
+        }
+        
         var diffObj = {
             h:diff.get('h'),
             m:diff.get('m'),
@@ -38,6 +47,7 @@ export default class DateTimeDiffFormat extends React.Component{
             MM:pad(diff.get('M'),2),
             yy:pad(diff.get('y'),2),
             dd:pad(diff.get('d'),2),
+            days:days
         }
         var diffObj1 = {
             hours:diff.get('h'),

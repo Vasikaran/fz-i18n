@@ -139,5 +139,49 @@ describe('DateTimeDiffFormat component', () => {
     var tree=ele.toJSON();
     expect(tree).toMatchSnapshot();
   })
+   fit("Should display years and days", ()=> { 
+   var ele=renderer.create(
+    <I18NProvider i18n={{"nyear.ndays.ago":"{0} years {1} days ago",yesterday:"yesterday"}}>
+      <DateTimeDiffFormat from="2017-10-25T05:55:28.000Z" fromTimeZone="Asia/Kolkata" to="2015-08-25T05:55:28.000Z" toTimeZone="Asia/Kolkata" 
+        format={({years,days,months,hours},pattern)=>{
+          if(years>1)
+          {
+            return {
+              key:"nyear.ndays",
+              params:['y',"days"]
+            }
+          }
+
+        }}
+        ago="ago"
+        later="later"
+        />
+    </I18NProvider>
+  );
+    var tree=ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  })
+ fit("Should display years and days1", ()=> { 
+   var ele=renderer.create(
+    <I18NProvider i18n={{"nyear.ndays.later":"{0} years {1} days later",yesterday:"yesterday"}}>
+      <DateTimeDiffFormat from="2015-08-25T05:55:28.000Z" fromTimeZone="Asia/Kolkata" to="2017-10-25T05:55:28.000Z" toTimeZone="Asia/Kolkata" 
+        format={({years,days,months,hours},pattern)=>{
+          if(years>1)
+          {
+            return {
+              key:"nyear.ndays",
+              params:['y',"days"]
+            }
+          }
+
+        }}
+        ago="ago"
+        later="later"
+        />
+    </I18NProvider>
+  );
+    var tree=ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  })
  
 })
