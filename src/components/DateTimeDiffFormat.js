@@ -20,7 +20,7 @@ export default class DateTimeDiffFormat extends React.Component{
         return suffix;
     }
     render(){
-        const { from, fromTimeZone, to, toTimeZone,today,yesterday,tomorrow,others, format } = this.props;
+        const { from, fromTimeZone, to, toTimeZone,today,yesterday,tomorrow,others, format, className } = this.props;
         let fromDateObj = moment(from).tz(fromTimeZone);
         let toDateObj = moment(to).tz(toTimeZone);
         let suffix = this.getSuffix(fromDateObj,toDateObj);
@@ -149,7 +149,7 @@ export default class DateTimeDiffFormat extends React.Component{
 
         } 
        }
-        return text? <span>{text}</span>:<FormatText i18NKey={ isSuffixEnable && suffix!=''? (key+"."+suffix):key} values={values}/>
+        return text? <span className={className}>{text}</span>:<FormatText i18NKey={ isSuffixEnable && suffix!=''? (key+"."+suffix):key} values={values} className={className}/>
     }
 }
 DateTimeDiffFormat.propTypes = {
