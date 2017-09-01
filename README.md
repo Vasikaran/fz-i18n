@@ -15,7 +15,7 @@
       </YourApp>
    </I18NProvider>
 ```
- 
+
 ```
    <ConnectI18NProvider i18n={(state)=>{return state.i18nObj }} timeZone={(state)=>state.user.timeZone}
    onChange=((accept,reject)=>{call accept or reject})>
@@ -33,7 +33,7 @@
 ```
 
 ```
-   <DateTimeDiffFormat from="2016-10-25T05:55:28.000Z" fromTimeZone="Asia/Kolkata" to="2016-10-18T05:55:29.000Z" toTimeZone="Asia/Kolkata" 
+   <DateTimeDiffFormat from="2016-10-25T05:55:28.000Z" fromTimeZone="Asia/Kolkata" to="2016-10-18T05:55:29.000Z" toTimeZone="Asia/Kolkata"
         today={{key:"today",params:["hh","mm","ss"]}}
         yesterday={{key:"yesterday",params:["hh","mm","ss"]}}
         tomorrow={{key:"tomorrow",params:["hh","mm","ss"]}}
@@ -90,7 +90,7 @@ var Textarea=()=>{
 return <textarea placeHolder={this.props.placeHolder} value={this.props.value}></textarea>
 }
 
-You can mention particular props going to accept i18n key. so convert using I18N HOC 
+You can mention particular props going to accept i18n key. so convert using I18N HOC
 Textarea = HOCI18N(["placeHolder"])(Textarea)
 <Textarea placeHolder="i18n.please.enter.desc.key"/>
 
@@ -100,3 +100,7 @@ You can use utils function
 ```
 
 i18n json build time composes not yet done
+
+
+#1.2.0-beta.9
+  * es6 move and prettier format

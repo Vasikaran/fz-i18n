@@ -1,0 +1,17 @@
+exports[`ConnectI18NProvider component Should display ConnectI18NProvider 1`] = `
+<span>
+  vimal
+</span>
+`;
+
+exports[`I18NProvider component Should display i18n value 1`] = `
+<span>
+  vimal
+</span>
+`;
+
+exports[`I18NProvider component Should display key not available case 1`] = `
+<span>
+  key2
+</span>
+`;

@@ -1,33 +1,28 @@
 {
   "name": "fz-i18n",
-  "version": "1.2.0-beta.8",
+  "version": "1.2.0-beta.9",
   "description": "i18n handling",
   "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
   "scripts": {
-    "clean":"fz-react-cli clean lib coverage dir",
+    "clean": "fz-react-cli clean lib coverage dir",
     "docs": "fz-react-cli docs",
-    "build:umd": "npm run clean && fz-react-cli build:component:umd",
-    "build":"npm run clean && fz-react-cli build:component",
-    "prepublish": "npm run clean && npm run build",
+    "build:umd": "fz-react-cli build:component:umd",
+    "build:es": "fz-react-cli build:library:es",
+    "build": "fz-react-cli build:component",
+    "prepublish": "npm run clean && npm run build && npm run build:es",
     "test": "fz-react-cli test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vimalceg/fz-i18n.git"
   },
-  "keywords": [
-    "react",
-    "i18n",
-    "i18n",
-    "component"
-  ],
+  "keywords": ["react", "i18n", "i18n", "component"],
   "author": "vimalesan.ceg@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vimalceg/fz-i18n/issues"
   },
-  "homepage": "https://github.com/vimalceg/fz-i18n#readme",
-  "devDependencies": {
-   "fz-react-cli":"file:../fz-react-cli"
-  }
+  "homepage": "https://github.com/vimalceg/fz-i18n#readme"
 }

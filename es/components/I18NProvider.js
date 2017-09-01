@@ -1,23 +1,6 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AppProvider = exports.ConnectI18NProvider = exports.i18NProviderUtils = undefined;
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _utils = require('../utils');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25,12 +8,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+import React, { PropTypes, Children } from 'react';
+import { connect } from 'react-redux';
+import { getI18NValue, userDateFormat } from '../utils';
+
 var emptyObj = {};
 var dummy = function dummy(key, values) {
   console.log('Not Mount <I18NProvider/> component.');
   return key;
 };
-var i18NProviderUtils = exports.i18NProviderUtils = {
+export var i18NProviderUtils = {
   getI18NValue: dummy,
   userDateFormat: dummy
 };
@@ -52,8 +39,8 @@ var I18NProvider = function (_React$Component) {
     _this.resolve = null;
     _this.reject = null;
     _this.state = { reRender: false };
-    i18NProviderUtils.getI18NValue = (0, _utils.getI18NValue)(props.i18n);
-    i18NProviderUtils.userDateFormat = (0, _utils.userDateFormat)(i18NProviderUtils.getI18NValue, props.timeZone);
+    i18NProviderUtils.getI18NValue = getI18NValue(props.i18n);
+    i18NProviderUtils.userDateFormat = userDateFormat(i18NProviderUtils.getI18NValue, props.timeZone);
     return _this;
   }
 
@@ -80,8 +67,8 @@ var I18NProvider = function (_React$Component) {
         }).then(function () {
           _this2.i18n = nextProps.i18n;
           _this2.timeZone = nextProps.timeZone;
-          i18NProviderUtils.getI18NValue = (0, _utils.getI18NValue)(nextProps.i18n);
-          i18NProviderUtils.userDateFormat = (0, _utils.userDateFormat)(i18NProviderUtils.getI18NValue, nextProps.timeZone);
+          i18NProviderUtils.getI18NValue = getI18NValue(nextProps.i18n);
+          i18NProviderUtils.userDateFormat = userDateFormat(i18NProviderUtils.getI18NValue, nextProps.timeZone);
           _this2.setState({ reRender: true }, function () {
             setTimeout(function () {
               return _this2.setState({ reRender: false });
@@ -97,14 +84,14 @@ var I18NProvider = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return this.state.reRender ? null : _react.Children.only(this.props.children);
+      return this.state.reRender ? null : Children.only(this.props.children);
     }
   }]);
 
   return I18NProvider;
-}(_react2.default.Component);
+}(React.Component);
 
-exports.default = I18NProvider;
+export default I18NProvider;
 
 
 I18NProvider.defaultProps = {
@@ -115,14 +102,14 @@ I18NProvider.defaultProps = {
   license: null
 };
 I18NProvider.childContextTypes = {
-  i18n: _react.PropTypes.object,
-  timeZone: _react.PropTypes.string,
-  user: _react.PropTypes.object,
-  permission: _react.PropTypes.object,
-  license: _react.PropTypes.object
+  i18n: PropTypes.object,
+  timeZone: PropTypes.string,
+  user: PropTypes.object,
+  permission: PropTypes.object,
+  license: PropTypes.object
 };
 
-var ConnectI18NProvider = exports.ConnectI18NProvider = (0, _reactRedux.connect)(function (state, props) {
+export var ConnectI18NProvider = connect(function (state, props) {
   var i18n = {};
   var timeZone = '';
   if (typeof props.i18n == 'function') {
@@ -141,7 +128,7 @@ var ConnectI18NProvider = exports.ConnectI18NProvider = (0, _reactRedux.connect)
   };
 })(I18NProvider);
 
-var AppProvider = exports.AppProvider = (0, _reactRedux.connect)(function (state, props) {
+export var AppProvider = connect(function (state, props) {
   var i18n = null;
   var timeZone = '';
   var user = null;

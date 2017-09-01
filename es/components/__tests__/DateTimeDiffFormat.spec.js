@@ -1,29 +1,14 @@
-'use strict';
-
-var _DateTimeDiffFormat = require('../DateTimeDiffFormat');
-
-var _DateTimeDiffFormat2 = _interopRequireDefault(_DateTimeDiffFormat);
-
-var _I18NProvider = require('../I18NProvider');
-
-var _I18NProvider2 = _interopRequireDefault(_I18NProvider);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactTestRenderer = require('react-test-renderer');
-
-var _reactTestRenderer2 = _interopRequireDefault(_reactTestRenderer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import DateTimeDiffFormat from '../DateTimeDiffFormat';
+import I18NProvider from '../I18NProvider';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
 describe('DateTimeDiffFormat component', function () {
   it('Should display today key', function () {
-    var ele = _reactTestRenderer2.default.create(_react2.default.createElement(
-      _I18NProvider2.default,
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
       { i18n: { today: 'today', yesterday: 'yesterday' } },
-      _react2.default.createElement(_DateTimeDiffFormat2.default, {
+      React.createElement(DateTimeDiffFormat, {
         from: '2016-10-25T05:55:28.000Z',
         fromTimeZone: 'Asia/Kolkata',
         to: '2016-10-25T05:55:28.000Z',
@@ -52,8 +37,8 @@ describe('DateTimeDiffFormat component', function () {
   });
   it('Should display today1', function () {
     var toDates = ['2016-10-24T05:55:28.000Z', '2016-10-24T03:55:28.000Z', '2016-10-23T08:55:28.000Z', '2016-10-23T08:55:27.000Z', '2016-10-25T05:55:28.000Z', '2016-10-25T05:55:27.000Z', '2016-10-25T05:55:29.000Z', '2016-10-25T05:54:28.000Z', '2016-10-25T05:53:28.000Z'];
-    var ele = _reactTestRenderer2.default.create(_react2.default.createElement(
-      _I18NProvider2.default,
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
       {
         i18n: {
           today: 'today',
@@ -65,11 +50,11 @@ describe('DateTimeDiffFormat component', function () {
           'support.nmins.ago': '{0} mins ago'
         }
       },
-      _react2.default.createElement(
+      React.createElement(
         'div',
         null,
         toDates.map(function (to) {
-          return _react2.default.createElement(_DateTimeDiffFormat2.default, {
+          return React.createElement(DateTimeDiffFormat, {
             from: '2016-10-25T05:55:28.000Z',
             fromTimeZone: 'Asia/Kolkata',
             to: to,
@@ -123,8 +108,8 @@ describe('DateTimeDiffFormat component', function () {
     expect(tree).toMatchSnapshot();
   });
   it('Should display today later', function () {
-    var ele = _reactTestRenderer2.default.create(_react2.default.createElement(
-      _I18NProvider2.default,
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
       {
         i18n: {
           today: 'today',
@@ -132,7 +117,7 @@ describe('DateTimeDiffFormat component', function () {
           'today.later': '{0}:{1}:{2} later'
         }
       },
-      _react2.default.createElement(_DateTimeDiffFormat2.default, {
+      React.createElement(DateTimeDiffFormat, {
         from: '2016-10-25T05:55:28.000Z',
         fromTimeZone: 'Asia/Kolkata',
         to: '2016-10-25T05:55:29.000Z',
@@ -160,8 +145,8 @@ describe('DateTimeDiffFormat component', function () {
     expect(tree).toMatchSnapshot();
   });
   it('Should display today ago', function () {
-    var ele = _reactTestRenderer2.default.create(_react2.default.createElement(
-      _I18NProvider2.default,
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
       {
         i18n: {
           today: 'today',
@@ -170,7 +155,7 @@ describe('DateTimeDiffFormat component', function () {
           'today.ago': '{0}:{1}:{2} ago'
         }
       },
-      _react2.default.createElement(_DateTimeDiffFormat2.default, {
+      React.createElement(DateTimeDiffFormat, {
         from: '2016-10-25T05:55:30.000Z',
         fromTimeZone: 'Asia/Kolkata',
         to: '2016-10-25T05:55:29.000Z',
@@ -198,15 +183,15 @@ describe('DateTimeDiffFormat component', function () {
     expect(tree).toMatchSnapshot();
   });
   fit('Should display years and days', function () {
-    var ele = _reactTestRenderer2.default.create(_react2.default.createElement(
-      _I18NProvider2.default,
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
       {
         i18n: {
           'nyear.ndays.ago': '{0} years {1} days ago',
           yesterday: 'yesterday'
         }
       },
-      _react2.default.createElement(_DateTimeDiffFormat2.default, {
+      React.createElement(DateTimeDiffFormat, {
         from: '2017-10-25T05:55:28.000Z',
         fromTimeZone: 'Asia/Kolkata',
         to: '2015-08-25T05:55:28.000Z',
@@ -232,15 +217,15 @@ describe('DateTimeDiffFormat component', function () {
     expect(tree).toMatchSnapshot();
   });
   fit('Should display years and days1', function () {
-    var ele = _reactTestRenderer2.default.create(_react2.default.createElement(
-      _I18NProvider2.default,
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
       {
         i18n: {
           'nyear.ndays.later': '{0} years {1} days later',
           yesterday: 'yesterday'
         }
       },
-      _react2.default.createElement(_DateTimeDiffFormat2.default, {
+      React.createElement(DateTimeDiffFormat, {
         from: '2015-08-25T05:55:28.000Z',
         fromTimeZone: 'Asia/Kolkata',
         to: '2017-10-25T05:55:28.000Z',
