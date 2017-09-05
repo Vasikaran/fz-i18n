@@ -1,11 +1,10 @@
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+import _Object$assign from 'babel-runtime/core-js/object/assign';
+import _Object$keys from 'babel-runtime/core-js/object/keys';
+import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
+import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
+import _createClass from 'babel-runtime/helpers/createClass';
+import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
+import _inherits from 'babel-runtime/helpers/inherits';
 import React, { PropTypes, Children } from 'react';
 import { replaceI18NValuesWithRegex, unescapeUnicode } from '../utils';
 
@@ -15,7 +14,7 @@ var I18N = function (_React$Component) {
 	function I18N(props) {
 		_classCallCheck(this, I18N);
 
-		var _this = _possibleConstructorReturn(this, (I18N.__proto__ || Object.getPrototypeOf(I18N)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (I18N.__proto__ || _Object$getPrototypeOf(I18N)).call(this, props));
 
 		_this.getI18NValue = _this.getI18NValue.bind(_this);
 		_this.createElement = _this.createElement.bind(_this);
@@ -45,7 +44,7 @@ var I18N = function (_React$Component) {
 		value: function createElement() {
 			var _this2 = this;
 
-			var props = Object.keys(this.props).reduce(function (result, nextKey) {
+			var props = _Object$keys(this.props).reduce(function (result, nextKey) {
 				if (nextKey != "i18NKey" && nextKey != "tag" && nextKey != "values" && nextKey != "isHtml") result[nextKey] = _this2.props[nextKey];
 				return result;
 			}, {});
@@ -55,7 +54,7 @@ var I18N = function (_React$Component) {
 					__html: this.getI18NValue()
 				};
 
-				return React.createElement(this.props.tag, Object.assign(props, { dangerouslySetInnerHTML: dangerouslySetInnerHTML }));
+				return React.createElement(this.props.tag, _Object$assign(props, { dangerouslySetInnerHTML: dangerouslySetInnerHTML }));
 			} else {
 				return React.createElement(this.props.tag, props, this.getI18NValue());
 			}

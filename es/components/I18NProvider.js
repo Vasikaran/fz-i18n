@@ -1,13 +1,10 @@
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+import _typeof from 'babel-runtime/helpers/typeof';
+import _Promise from 'babel-runtime/core-js/promise';
+import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
+import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
+import _createClass from 'babel-runtime/helpers/createClass';
+import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
+import _inherits from 'babel-runtime/helpers/inherits';
 import React, { PropTypes, Children } from 'react';
 import { connect } from 'react-redux';
 import { getI18NValue, userDateFormat } from '../utils';
@@ -28,7 +25,7 @@ var I18NProvider = function (_React$Component) {
   function I18NProvider(props, context) {
     _classCallCheck(this, I18NProvider);
 
-    var _this = _possibleConstructorReturn(this, (I18NProvider.__proto__ || Object.getPrototypeOf(I18NProvider)).call(this, props, context));
+    var _this = _possibleConstructorReturn(this, (I18NProvider.__proto__ || _Object$getPrototypeOf(I18NProvider)).call(this, props, context));
 
     _this.i18n = props.i18n;
     _this.timeZone = props.timeZone;
@@ -61,7 +58,7 @@ var I18NProvider = function (_React$Component) {
       var _this2 = this;
 
       if (this.props.i18n != nextProps.i18n || this.props.timeZone != nextProps.timeZone || this.props.user != nextProps.user || this.props.permission != nextProps.permission || this.props.license != nextProps.license && this.promise) {
-        this.promise = new Promise(function (res, rej) {
+        this.promise = new _Promise(function (res, rej) {
           _this2.resolve = res;
           _this2.reject = rej;
         }).then(function () {
