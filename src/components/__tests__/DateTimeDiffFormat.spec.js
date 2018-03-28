@@ -4,7 +4,85 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 describe('DateTimeDiffFormat component', () => {
-  it('Should display today key', () => {
+  it('Should display yesterday - with same time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T06:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-24T05:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display yesterday - less than 24 hour', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-24T06:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display yesterday - greater than 24 hour', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-24T04:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display today key - same time', () => {
     var ele = renderer.create(
       <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
         <DateTimeDiffFormat
@@ -30,17 +108,334 @@ describe('DateTimeDiffFormat component', () => {
     var tree = ele.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should display today key - less than 24 hour', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-25T04:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display today key -  greater than 24 hour', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-25T06:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display tomorrow key - same time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-26T05:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display tomorrow key - less than 24 hour', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-26T04:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display tomorrow key -  greater than 24 hour', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-26T06:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return getDateKeyWithParam(years, days, hours, minutes);
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display other - same time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-23T05:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes, suffix }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return '[less 7] DD-MM-YYYY';
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display other - greater time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-23T06:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes, suffix }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return '[less 7] DD-MM-YYYY';
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display other - less time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-23T04:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes, suffix }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return '[less 7] DD-MM-YYYY';
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display other later- same time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-27T05:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes, suffix, isWithInAWeek }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return '[less 7] DD-MM-YYYY';
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display other later- less time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-27T06:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes, suffix }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return '[less 7] DD-MM-YYYY';
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display other later- less time', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-10-27T04:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes, suffix }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return '[less 7] DD-MM-YYYY';
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should display others', () => {
+    var ele = renderer.create(
+      <I18NProvider i18n={{ today: 'today', yesterday: 'yesterday' }}>
+        <DateTimeDiffFormat
+          from="2016-10-25T05:55:28.000Z"
+          fromTimeZone="Asia/Kolkata"
+          to="2016-11-27T05:55:28.000Z"
+          toTimeZone="Asia/Kolkata"
+          today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
+          yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
+          tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
+          others={({ years, days, hours, minutes, suffix, isWithInAWeek }) => {
+            if (days > 7) {
+              return 'DD-MM-YYYY';
+            } else {
+              return '[less 7] DD-MM-YYYY';
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Should display today1', () => {
     var toDates = [
       '2016-10-24T05:55:28.000Z',
-      '2016-10-24T03:55:28.000Z',
-      '2016-10-23T08:55:28.000Z',
-      '2016-10-23T08:55:27.000Z',
+      '2016-10-24T06:55:28.000Z',
+      '2016-10-24T04:55:28.000Z',
       '2016-10-25T05:55:28.000Z',
-      '2016-10-25T05:55:27.000Z',
-      '2016-10-25T05:55:29.000Z',
-      '2016-10-25T05:54:28.000Z',
-      '2016-10-25T05:53:28.000Z'
+      '2016-10-25T04:55:28.000Z',
+      '2016-10-25T06:55:28.000Z',
+      '2016-10-26T05:55:28.000Z',
+      '2016-10-26T04:55:28.000Z',
+      '2016-10-26T06:55:28.000Z',
+      '2016-10-23T05:55:28.000Z',
+      '2016-10-23T04:55:28.000Z',
+      '2016-10-23T06:55:28.000Z'
     ];
     var ele = renderer.create(
       <I18NProvider
@@ -55,9 +450,10 @@ describe('DateTimeDiffFormat component', () => {
         }}
       >
         <div>
-          {toDates.map(to => {
+          {toDates.map((to, i) => {
             return (
               <DateTimeDiffFormat
+                key={i}
                 from="2016-10-25T05:55:28.000Z"
                 fromTimeZone="Asia/Kolkata"
                 to={to}
@@ -83,6 +479,8 @@ describe('DateTimeDiffFormat component', () => {
                       };
                       break;
                     case '001000':
+                    case '001100':
+                    case '001200':
                       return {
                         key: 'support.1day'
                       };
@@ -172,7 +570,7 @@ describe('DateTimeDiffFormat component', () => {
     var tree = ele.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  fit('Should display years and days', () => {
+  it('Should display years and days', () => {
     var ele = renderer.create(
       <I18NProvider
         i18n={{
@@ -201,7 +599,7 @@ describe('DateTimeDiffFormat component', () => {
     var tree = ele.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  fit('Should display years and days1', () => {
+  it('Should display years and days1', () => {
     var ele = renderer.create(
       <I18NProvider
         i18n={{

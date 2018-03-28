@@ -1,58 +1,224 @@
+exports[`DateTimeDiffFormat component Should display other - greater time 1`] = `
+<span
+  className=""
+  data-title="">
+  less 7 23-10-2016
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display other - less time 1`] = `
+<span
+  className=""
+  data-title="">
+  less 7 23-10-2016
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display other - same time 1`] = `
+<span
+  className=""
+  data-title="">
+  less 7 23-10-2016
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display other later- less time 1`] = `
+<span
+  className=""
+  data-title="">
+  less 7 27-10-2016
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display other later- less time 2`] = `
+<span
+  className=""
+  data-title="">
+  less 7 27-10-2016
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display other later- same time 1`] = `
+<span
+  className=""
+  data-title="">
+  less 7 27-10-2016
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display others 1`] = `
+<span
+  className=""
+  data-title="">
+  less 7 27-11-2016
+</span>
+`;
+
 exports[`DateTimeDiffFormat component Should display today ago 1`] = `
-<span>
+<span
+  className=""
+  data-title="">
   00:00:01 ago
 </span>
 `;
 
-exports[`DateTimeDiffFormat component Should display today key 1`] = `
-<span>
+exports[`DateTimeDiffFormat component Should display today key -  greater than 24 hour 1`] = `
+<span
+  className=""
+  data-title="">
+  today.later
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display today key - less than 24 hour 1`] = `
+<span
+  className=""
+  data-title="">
+  today.ago
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display today key - same time 1`] = `
+<span
+  className=""
+  data-title="">
   today
 </span>
 `;
 
 exports[`DateTimeDiffFormat component Should display today later 1`] = `
-<span>
+<span
+  className=""
+  data-title="">
   00:00:01 later
 </span>
 `;
 
 exports[`DateTimeDiffFormat component Should display today1 1`] = `
 <div>
-  <span>
-    1day ago
+  <span
+    className=""
+    data-title="">
+    
   </span>
-  <span>
-    one day 2 hours ago
+  <span
+    className=""
+    data-title="">
+    
   </span>
-  <span>
-    one day 21 hours ago
+  <span
+    className=""
+    data-title="">
+    
   </span>
-  <span>
-    one day 21 hours ago
+  <span
+    className=""
+    data-title="">
+    
   </span>
-  <span>
-    noooow
+  <span
+    className=""
+    data-title="">
+    
   </span>
-  <span>
-    noooow
+  <span
+    className=""
+    data-title="">
+    
   </span>
-  <span>
-    noooow
+  <span
+    className=""
+    data-title="">
+    
   </span>
-  <span>
+  <span
+    className=""
+    data-title="">
+    
+  </span>
+  <span
+    className=""
+    data-title="">
+    
+  </span>
+  <span
+    className=""
+    data-title="">
+    
+  </span>
+  <span
+    className=""
+    data-title="">
+    
+  </span>
+  <span
+    className=""
+    data-title="">
     
   </span>
 </div>
 `;
 
+exports[`DateTimeDiffFormat component Should display tomorrow key -  greater than 24 hour 1`] = `
+<span
+  className=""
+  data-title="">
+  tomorrow
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display tomorrow key - less than 24 hour 1`] = `
+<span
+  className=""
+  data-title="">
+  tomorrow
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display tomorrow key - same time 1`] = `
+<span
+  className=""
+  data-title="">
+  tomorrow
+</span>
+`;
+
 exports[`DateTimeDiffFormat component Should display years and days 1`] = `
-<span>
+<span
+  className=""
+  data-title="">
   2 years 61 days ago
 </span>
 `;
 
 exports[`DateTimeDiffFormat component Should display years and days1 1`] = `
-<span>
+<span
+  className=""
+  data-title="">
   2 years 61 days later
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display yesterday - greater than 24 hour 1`] = `
+<span
+  className=""
+  data-title="">
+  yesterday
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display yesterday - less than 24 hour 1`] = `
+<span
+  className=""
+  data-title="">
+  yesterday
+</span>
+`;
+
+exports[`DateTimeDiffFormat component Should display yesterday - with same time 1`] = `
+<span
+  className=""
+  data-title="">
+  yesterday
 </span>
 `;

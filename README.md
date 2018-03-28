@@ -1,14 +1,17 @@
 # fz-i18n
+
 # Components
-1. I18NProvider
-2. ConnectI18NProvider
-3. I18N
-4. FormatText
-5. PluralFormat
-6. DateTimeDiffFormat
-7. UserTimeDiffFormat
+
+1.  I18NProvider
+2.  ConnectI18NProvider
+3.  I18N
+4.  FormatText
+5.  PluralFormat
+6.  DateTimeDiffFormat
+7.  UserTimeDiffFormat
 
 # How to use
+
 ```
    <I18NProvider i18n={{key:"value"}} timeZone="Asia/kolkatta">
       <YourApp>
@@ -66,7 +69,9 @@
 ```
 
 # Some scenario
+
 ## More general component
+
 ```
 var Greetings = ()=>{
    return <span>Hello,{this.props.name}</span>
@@ -96,11 +101,17 @@ Textarea = HOCI18N(["placeHolder"])(Textarea)
 
 You can use utils function
 <Textarea placeHolder={i18nUtils.getI18NValue("i18n.please.enter.desc.key")}/>
-
 ```
 
 i18n json build time composes not yet done
 
-
 #1.2.0-beta.9
-  * es6 move and prettier format
+
+* es6 move and prettier format
+
+#1.2.0-beta.11
+
+title support
+missing use Cases
+today yesterday tomorrow error fix
+pattern format changed
