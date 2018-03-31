@@ -115,3 +115,6 @@ title support
 missing use Cases
 today yesterday tomorrow error fix
 pattern format changed
+
+#1.2.0-beta.12
+user date format pattern issue fix

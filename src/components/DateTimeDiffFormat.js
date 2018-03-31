@@ -40,8 +40,8 @@ export default class DateTimeDiffFormat extends React.Component {
       tomorrow,
       others,
       format,
-      className = '',
-      title = ''
+      className = null,
+      title = null
     } = this.props;
     let fromDateObj = moment(from).tz(fromTimeZone);
     let toDateObj = moment(to).tz(toTimeZone);
@@ -111,6 +111,8 @@ export default class DateTimeDiffFormat extends React.Component {
           res = res + '0';
         } else if (next != 0) {
           count++;
+          res = res + next;
+        } else {
           res = res + next;
         }
         return res;

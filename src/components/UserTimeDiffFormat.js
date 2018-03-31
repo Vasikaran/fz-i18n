@@ -16,7 +16,8 @@ export default class UserTimeDiffFormat extends Component {
       ago,
       later,
       format,
-      title
+      title,
+      className
     } = this.props;
     return (
       <DateTimeDiffFormat
@@ -32,6 +33,7 @@ export default class UserTimeDiffFormat extends Component {
         later={later}
         format={format}
         title={title}
+        className={className}
       />
     );
   }

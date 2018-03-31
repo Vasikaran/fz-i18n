@@ -162,6 +162,7 @@ export function userDateFormat(getI18NValue, userTimeZone) {
     var text = null;
     if (format) {
       let years, months, days, hours, minutes, seconds;
+
       years = diffObj1.years > 1 ? '2' : diffObj1.years;
       //  months = diffObj1.months > 1 ? '2' : diffObj1.months;
       //  days = diffObj1.days > 1 ? '2' : diffObj1.days;
@@ -176,6 +177,8 @@ export function userDateFormat(getI18NValue, userTimeZone) {
           res = res + '0';
         } else if (next != 0) {
           count++;
+          res = res + next;
+        } else {
           res = res + next;
         }
         return res;

@@ -25,7 +25,6 @@ describe('UserTimeDiffFormat component', () => {
       >
         <UserTimeDiffFormat
           to="2016-10-24T05:55:28.000Z"
-          toTimeZone="Asia/Kolkata"
           today={{ key: 'today', params: ['hh', 'mm', 'ss'] }}
           yesterday={{ key: 'yesterday', params: ['hh', 'mm', 'ss'] }}
           tomorrow={{ key: 'tomorrow', params: ['hh', 'mm', 'ss'] }}
@@ -918,6 +917,201 @@ describe('UserTimeDiffFormat component', () => {
                   key: 'overdue',
                   params: ['dd']
                 };
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  //2016-10-25T05:55:28.000Z
+  it('created time today', () => {
+    var ele = renderer.create(
+      <I18NProvider
+        i18n={{ 'overdue.ago': 'late by {0}' }}
+        timeZone="Asia/Kolkata"
+      >
+        <UserTimeDiffFormat
+          to="2016-10-25T06:55:28.000Z"
+          today={'hh:mm A'}
+          yesterday={'DD/MM/YYYY hh:mm A'}
+          tomorrow={'[tommorrow] hh:mm A'}
+          others={({ years, days, hours, minutes }) => {
+            return 'DD-MM-YYYY';
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('created time yesterday', () => {
+    var ele = renderer.create(
+      <I18NProvider
+        i18n={{ 'overdue.ago': 'late by {0}' }}
+        timeZone="Asia/Kolkata"
+      >
+        <UserTimeDiffFormat
+          to="2016-10-24T06:55:28.000Z"
+          today={'hh:mm A'}
+          yesterday={'[yesterday] hh:mm A'}
+          tomorrow={'[tommorrow] hh:mm A'}
+          others={({ years, days, hours, minutes }) => {
+            return 'DD-MM-YYYY';
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('created time tomorrow', () => {
+    var ele = renderer.create(
+      <I18NProvider
+        i18n={{ 'overdue.ago': 'late by {0}' }}
+        timeZone="Asia/Kolkata"
+      >
+        <UserTimeDiffFormat
+          to="2016-10-26T06:55:28.000Z"
+          today={'hh:mm A'}
+          yesterday={'[yesterday] hh:mm A'}
+          tomorrow={'[tommorrow] hh:mm A'}
+          others={({ years, days, hours, minutes }) => {
+            return 'DD-MM-YYYY';
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('created time within 7 days', () => {
+    var ele = renderer.create(
+      <I18NProvider
+        i18n={{
+          'overdue.ago': 'late by {0}',
+          'support.ndays.nhours.ago': '{0} days {1} hours ago',
+          'support.ndays.1hour.ago': '{0} days one hour ago'
+        }}
+        timeZone="Asia/Kolkata"
+      >
+        <UserTimeDiffFormat
+          to="2016-10-19T06:55:28.000Z"
+          today={'hh:mm A'}
+          yesterday={'[yesterday] hh:mm A'}
+          tomorrow={'[tommorrow] hh:mm A'}
+          others={({ years, months, days, hours, minutes, yDays }) => {
+            years = years > 1 ? '2' : years;
+            //  months = diffObj1.months > 1 ? '2' : diffObj1.months;
+            //days = diffObj1.days > 1 ? '2' : diffObj1.days;
+            days = yDays > 1 ? '2' : yDays;
+            hours = hours > 1 ? '2' : hours;
+            minutes = minutes > 1 ? '2' : minutes;
+            //seconds = diffObj1.seconds > 1 ? '2' : diffObj1.seconds;
+            // let pattern = '' + years + months + days + hours + minutes + seconds;
+            let count = 0;
+            let pattern = [years, days, hours, minutes].reduce((res, next) => {
+              if (count == 2) {
+                res = res + '0';
+              } else if (next != 0) {
+                count++;
+                res = res + next;
+              } else {
+                res = res + next;
+              }
+              return res;
+            }, '');
+            let getDateI18NString = {
+              '0000': 'support.label.just.now',
+              '0001': 'support.1minute',
+              '0002': 'support.nminutes',
+              '0010': 'support.1hour',
+              '0011': 'support.1hour.1minute',
+              '0012': 'support.1hour.nminutes',
+              '0020': 'support.nhours',
+              '0021': 'support.nhours.1minute',
+              '0022': 'support.nhours.nminutes',
+              '0100': 'support.1day',
+              '0110': 'support.1day.1hour',
+              '0120': 'support.1day.nhours',
+              '0200': 'support.ndays',
+              '0210': 'support.ndays.1hour',
+              '0220': 'support.ndays.nhours',
+              '1000': 'support.1year',
+              '1100': 'support.1year.1day',
+              '1200': 'support.1year.ndays',
+              '2000': 'support.nyears',
+              '2100': 'support.nyears.1day',
+              '2200': 'support.nyears.ndays'
+            };
+            if (years == 0 && months == 0 && days < 7) {
+              return {
+                key: getDateI18NString[pattern],
+                params: ['d', 'h']
+              };
+            } else {
+            }
+          }}
+          ago="ago"
+          later="later"
+        />
+      </I18NProvider>
+    );
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('created time within pattern', () => {
+    var ele = renderer.create(
+      <I18NProvider
+        i18n={{
+          'overdue.ago': 'late by {0}',
+          'support.ndays.nhours.ago': '{0} days {1} hours ago',
+          'support.ndays.1hour.ago': '{0} days one hour ago'
+        }}
+        timeZone="Asia/Kolkata"
+      >
+        <UserTimeDiffFormat
+          to="2016-10-19T06:55:28.000Z"
+          format={({ years, months, days, hours, minutes, yDays }, pattern) => {
+            let getDateI18NString = {
+              '0000': 'support.label.just.now',
+              '0001': 'support.1minute',
+              '0002': 'support.nminutes',
+              '0010': 'support.1hour',
+              '0011': 'support.1hour.1minute',
+              '0012': 'support.1hour.nminutes',
+              '0020': 'support.nhours',
+              '0021': 'support.nhours.1minute',
+              '0022': 'support.nhours.nminutes',
+              '0100': 'support.1day',
+              '0110': 'support.1day.1hour',
+              '0120': 'support.1day.nhours',
+              '0200': 'support.ndays',
+              '0210': 'support.ndays.1hour',
+              '0220': 'support.ndays.nhours',
+              '1000': 'support.1year',
+              '1100': 'support.1year.1day',
+              '1200': 'support.1year.ndays',
+              '2000': 'support.nyears',
+              '2100': 'support.nyears.1day',
+              '2200': 'support.nyears.ndays'
+            };
+            if (years == 0 && months == 0 && days < 7) {
+              return {
+                key: getDateI18NString[pattern],
+                params: ['d', 'h']
+              };
+            } else {
             }
           }}
           ago="ago"
