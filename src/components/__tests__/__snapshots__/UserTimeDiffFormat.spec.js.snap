@@ -1,3 +1,252 @@
+exports[`UserTimeDiffFormat component Should display other - greater time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  less 7 23-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display other - less time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  less 7 23-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display other - same time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  less 7 23-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display other later- less time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  less 7 27-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display other later- less time 2`] = `
+<span
+  className={null}
+  data-title={null}>
+  less 7 27-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display other later- same time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  less 7 27-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display others 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  less 7 27-11-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today ago - user 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today ago 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today key -  greater than 24 hour 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today key - less than 24 hour 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today key - same time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today key - user 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today later - user 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today later 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  25-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display today1 1`] = `
+<div>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+  <span
+    className={null}
+    data-title={null}>
+    
+  </span>
+</div>
+`;
+
+exports[`UserTimeDiffFormat component Should display tomorrow key -  greater than 24 hour 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  26-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display tomorrow key - less than 24 hour 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  26-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display tomorrow key - same time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  26-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display years and days 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display years and days1 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display yesterday - greater than 24 hour 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  24-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display yesterday - less than 24 hour 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  24-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component Should display yesterday - with same time 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  24-10-2016
+</span>
+`;
+
 exports[`UserTimeDiffFormat component created time today 1`] = `
 <span
   className={null}
@@ -35,5 +284,37 @@ exports[`UserTimeDiffFormat component created time yesterday 1`] = `
   className={null}
   data-title={null}>
   yesterday 12:25 PM
+</span>
+`;
+
+exports[`UserTimeDiffFormat component task due date set - overdue 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  
+</span>
+`;
+
+exports[`UserTimeDiffFormat component task due date set - today [hh:mm:AM/PM] 1`] = `
+<span
+  className={null}
+  data-title="late by 364 days">
+  25-10-2015
+</span>
+`;
+
+exports[`UserTimeDiffFormat component task due date set - tomorrow [hh:mm:AM/PM] 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  26-10-2016
+</span>
+`;
+
+exports[`UserTimeDiffFormat component task due date set - yesterday dd:MM:YYYY hh:mm:A 1`] = `
+<span
+  className={null}
+  data-title={null}>
+  24-10-2016
 </span>
 `;

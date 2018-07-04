@@ -122,7 +122,7 @@ export default class DateTimeDiffFormat extends React.Component {
       if (value && typeof value == 'object') {
         key = value.key;
         values = getValues(value.params, diffObj);
-        if (pattern.indexOf('00000') == 0) {
+        if (pattern.indexOf('0000') == 0) {
           //suffix ignore for second hook
           isSuffixEnable = false;
         } else {

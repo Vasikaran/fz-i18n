@@ -49,9 +49,9 @@ var DateTimeDiffFormat = function (_React$Component) {
           others = _props.others,
           format = _props.format,
           _props$className = _props.className,
-          className = _props$className === undefined ? '' : _props$className,
+          className = _props$className === undefined ? null : _props$className,
           _props$title = _props.title,
-          title = _props$title === undefined ? '' : _props$title;
+          title = _props$title === undefined ? null : _props$title;
 
       var fromDateObj = moment(from).tz(fromTimeZone);
       var toDateObj = moment(to).tz(toTimeZone);
@@ -123,6 +123,8 @@ var DateTimeDiffFormat = function (_React$Component) {
           } else if (next != 0) {
             count++;
             res = res + next;
+          } else {
+            res = res + next;
           }
           return res;
         }, '');
@@ -131,7 +133,7 @@ var DateTimeDiffFormat = function (_React$Component) {
         if (_value && (typeof _value === 'undefined' ? 'undefined' : _typeof(_value)) == 'object') {
           key = _value.key;
           values = getValues(_value.params, diffObj);
-          if (pattern.indexOf('00000') == 0) {
+          if (pattern.indexOf('0000') == 0) {
             //suffix ignore for second hook
             isSuffixEnable = false;
           } else {
