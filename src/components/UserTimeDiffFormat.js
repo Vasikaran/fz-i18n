@@ -4,7 +4,7 @@ import DateTimeDiffFormat from './DateTimeDiffFormat';
 export default class UserTimeDiffFormat extends Component {
   render() {
     var currentTime = new Date();
-    var currentTimeUTCString = currentTime.toUTCString();
+    var currentTimeUTCString = currentTime.toISOString();
     var timeZoneString = this.context.timeZone;
 
     var {

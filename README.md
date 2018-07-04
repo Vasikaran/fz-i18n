@@ -107,7 +107,7 @@ i18n json build time composes not yet done
 
 #1.2.0-beta.9
 
-* es6 move and prettier format
+- es6 move and prettier format
 
 #1.2.0-beta.11
 
@@ -118,3 +118,6 @@ pattern format changed
 
 #1.2.0-beta.12
 user date format pattern issue fix
+
+#1.2.0-beta.13
+suffix issue fix - pattern "00000" to "0000"

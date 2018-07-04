@@ -19,7 +19,7 @@ var UserTimeDiffFormat = function (_Component) {
     key: 'render',
     value: function render() {
       var currentTime = new Date();
-      var currentTimeUTCString = currentTime.toUTCString();
+      var currentTimeUTCString = currentTime.toISOString();
       var timeZoneString = this.context.timeZone;
 
       var _props = this.props,
@@ -31,7 +31,8 @@ var UserTimeDiffFormat = function (_Component) {
           ago = _props.ago,
           later = _props.later,
           format = _props.format,
-          title = _props.title;
+          title = _props.title,
+          className = _props.className;
 
       return React.createElement(DateTimeDiffFormat, {
         from: currentTimeUTCString,
@@ -45,7 +46,8 @@ var UserTimeDiffFormat = function (_Component) {
         ago: ago,
         later: later,
         format: format,
-        title: title
+        title: title,
+        className: className
       });
     }
   }]);

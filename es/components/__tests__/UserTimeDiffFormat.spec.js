@@ -26,7 +26,6 @@ describe('UserTimeDiffFormat component', function () {
       },
       React.createElement(UserTimeDiffFormat, {
         to: '2016-10-24T05:55:28.000Z',
-        toTimeZone: 'Asia/Kolkata',
         today: { key: 'today', params: ['hh', 'mm', 'ss'] },
         yesterday: { key: 'yesterday', params: ['hh', 'mm', 'ss'] },
         tomorrow: { key: 'tomorrow', params: ['hh', 'mm', 'ss'] },
@@ -1040,6 +1039,228 @@ describe('UserTimeDiffFormat component', function () {
                 params: ['dd']
               };
           }
+        },
+        ago: 'ago',
+        later: 'later'
+      })
+    ));
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  //2016-10-25T05:55:28.000Z
+  it('created time today', function () {
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
+      {
+        i18n: { 'overdue.ago': 'late by {0}' },
+        timeZone: 'Asia/Kolkata'
+      },
+      React.createElement(UserTimeDiffFormat, {
+        to: '2016-10-25T06:55:28.000Z',
+        today: 'hh:mm A',
+        yesterday: 'DD/MM/YYYY hh:mm A',
+        tomorrow: '[tommorrow] hh:mm A',
+        others: function others(_ref28) {
+          var years = _ref28.years,
+              days = _ref28.days,
+              hours = _ref28.hours,
+              minutes = _ref28.minutes;
+
+          return 'DD-MM-YYYY';
+        },
+        ago: 'ago',
+        later: 'later'
+      })
+    ));
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('created time yesterday', function () {
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
+      {
+        i18n: { 'overdue.ago': 'late by {0}' },
+        timeZone: 'Asia/Kolkata'
+      },
+      React.createElement(UserTimeDiffFormat, {
+        to: '2016-10-24T06:55:28.000Z',
+        today: 'hh:mm A',
+        yesterday: '[yesterday] hh:mm A',
+        tomorrow: '[tommorrow] hh:mm A',
+        others: function others(_ref29) {
+          var years = _ref29.years,
+              days = _ref29.days,
+              hours = _ref29.hours,
+              minutes = _ref29.minutes;
+
+          return 'DD-MM-YYYY';
+        },
+        ago: 'ago',
+        later: 'later'
+      })
+    ));
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('created time tomorrow', function () {
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
+      {
+        i18n: { 'overdue.ago': 'late by {0}' },
+        timeZone: 'Asia/Kolkata'
+      },
+      React.createElement(UserTimeDiffFormat, {
+        to: '2016-10-26T06:55:28.000Z',
+        today: 'hh:mm A',
+        yesterday: '[yesterday] hh:mm A',
+        tomorrow: '[tommorrow] hh:mm A',
+        others: function others(_ref30) {
+          var years = _ref30.years,
+              days = _ref30.days,
+              hours = _ref30.hours,
+              minutes = _ref30.minutes;
+
+          return 'DD-MM-YYYY';
+        },
+        ago: 'ago',
+        later: 'later'
+      })
+    ));
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('created time within 7 days', function () {
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
+      {
+        i18n: {
+          'overdue.ago': 'late by {0}',
+          'support.ndays.nhours.ago': '{0} days {1} hours ago',
+          'support.ndays.1hour.ago': '{0} days one hour ago'
+        },
+        timeZone: 'Asia/Kolkata'
+      },
+      React.createElement(UserTimeDiffFormat, {
+        to: '2016-10-19T06:55:28.000Z',
+        today: 'hh:mm A',
+        yesterday: '[yesterday] hh:mm A',
+        tomorrow: '[tommorrow] hh:mm A',
+        others: function others(_ref31) {
+          var years = _ref31.years,
+              months = _ref31.months,
+              days = _ref31.days,
+              hours = _ref31.hours,
+              minutes = _ref31.minutes,
+              yDays = _ref31.yDays;
+
+          years = years > 1 ? '2' : years;
+          //  months = diffObj1.months > 1 ? '2' : diffObj1.months;
+          //days = diffObj1.days > 1 ? '2' : diffObj1.days;
+          days = yDays > 1 ? '2' : yDays;
+          hours = hours > 1 ? '2' : hours;
+          minutes = minutes > 1 ? '2' : minutes;
+          //seconds = diffObj1.seconds > 1 ? '2' : diffObj1.seconds;
+          // let pattern = '' + years + months + days + hours + minutes + seconds;
+          var count = 0;
+          var pattern = [years, days, hours, minutes].reduce(function (res, next) {
+            if (count == 2) {
+              res = res + '0';
+            } else if (next != 0) {
+              count++;
+              res = res + next;
+            } else {
+              res = res + next;
+            }
+            return res;
+          }, '');
+          var getDateI18NString = {
+            '0000': 'support.label.just.now',
+            '0001': 'support.1minute',
+            '0002': 'support.nminutes',
+            '0010': 'support.1hour',
+            '0011': 'support.1hour.1minute',
+            '0012': 'support.1hour.nminutes',
+            '0020': 'support.nhours',
+            '0021': 'support.nhours.1minute',
+            '0022': 'support.nhours.nminutes',
+            '0100': 'support.1day',
+            '0110': 'support.1day.1hour',
+            '0120': 'support.1day.nhours',
+            '0200': 'support.ndays',
+            '0210': 'support.ndays.1hour',
+            '0220': 'support.ndays.nhours',
+            '1000': 'support.1year',
+            '1100': 'support.1year.1day',
+            '1200': 'support.1year.ndays',
+            '2000': 'support.nyears',
+            '2100': 'support.nyears.1day',
+            '2200': 'support.nyears.ndays'
+          };
+          if (years == 0 && months == 0 && days < 7) {
+            return {
+              key: getDateI18NString[pattern],
+              params: ['d', 'h']
+            };
+          } else {}
+        },
+        ago: 'ago',
+        later: 'later'
+      })
+    ));
+    var tree = ele.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('created time within pattern', function () {
+    var ele = renderer.create(React.createElement(
+      I18NProvider,
+      {
+        i18n: {
+          'overdue.ago': 'late by {0}',
+          'support.ndays.nhours.ago': '{0} days {1} hours ago',
+          'support.ndays.1hour.ago': '{0} days one hour ago'
+        },
+        timeZone: 'Asia/Kolkata'
+      },
+      React.createElement(UserTimeDiffFormat, {
+        to: '2016-10-19T06:55:28.000Z',
+        format: function format(_ref32, pattern) {
+          var years = _ref32.years,
+              months = _ref32.months,
+              days = _ref32.days,
+              hours = _ref32.hours,
+              minutes = _ref32.minutes,
+              yDays = _ref32.yDays;
+
+          var getDateI18NString = {
+            '0000': 'support.label.just.now',
+            '0001': 'support.1minute',
+            '0002': 'support.nminutes',
+            '0010': 'support.1hour',
+            '0011': 'support.1hour.1minute',
+            '0012': 'support.1hour.nminutes',
+            '0020': 'support.nhours',
+            '0021': 'support.nhours.1minute',
+            '0022': 'support.nhours.nminutes',
+            '0100': 'support.1day',
+            '0110': 'support.1day.1hour',
+            '0120': 'support.1day.nhours',
+            '0200': 'support.ndays',
+            '0210': 'support.ndays.1hour',
+            '0220': 'support.ndays.nhours',
+            '1000': 'support.1year',
+            '1100': 'support.1year.1day',
+            '1200': 'support.1year.ndays',
+            '2000': 'support.nyears',
+            '2100': 'support.nyears.1day',
+            '2200': 'support.nyears.ndays'
+          };
+          if (years == 0 && months == 0 && days < 7) {
+            return {
+              key: getDateI18NString[pattern],
+              params: ['d', 'h']
+            };
+          } else {}
         },
         ago: 'ago',
         later: 'later'
